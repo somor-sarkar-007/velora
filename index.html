@@ -1,0 +1,3052 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Velora </title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm6-8c0 2.21-1.79 4-4 4h-1v2H9v-6h3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2H7c0-2.21 1.79-4 4-4s4 1.79 4 4z'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- গ্লাস নেভবার ---------- */
+    .glass-navbar {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      width: 100%;
+    }
+
+    /* ---------- মোবাইল মেনু অ্যানিমেশন ---------- */
+    .mobile-menu {
+      transition: all 0.3s ease-in-out;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+    .mobile-menu.open {
+      max-height: 480px;
+      opacity: 1;
+      visibility: visible;
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu {
+        max-height: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        overflow: visible;
+      }
+    }
+
+    /* ---------- প্রোফাইল ড্রপডাউন (ডেস্কটপ) ---------- */
+    .profile-dropdown {
+      transition: all 0.2s ease;
+      transform-origin: top right;
+    }
+
+    /* ---------- প্রোফাইল সেকশন (মোবাইলে দেখাবে) ---------- */
+    #mobileProfileSection {
+      transition: all 0.3s ease;
+    }
+    #mobileProfileSection.hidden {
+      display: none;
+    }
+
+    /* ---------- ডেমো কন্টেন্ট ---------- */
+    .demo-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #94a3b8;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    
+                  <span class="btn-text inline-flex items-center gap-2">
+                                Book now <i class="fa-solid fa-arrow-right"></i>
+                            </span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl">✈️</span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== কার্ড ৬ – সান্তোরিনি ====== -->
+            <div class="destination-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-indigo-300/50 hover:-translate-y-1.5">
+                <div class="card-image-wrap relative h-48 md:h-60 lg:h-64 overflow-hidden">
+                    <img src="https://picsum.photos/seed/santorini2/600/450" alt="Santorini, Greece" class="card-image w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="card-badge-rating absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i>
+                        <span>4.8</span>
+                        <span class="text-gray-400 font-normal text-[8px]">(1.6k)</span>
+                    </div>
+                    <div class="card-badge-location absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i>
+                        Greece
+                    </div>
+                    <div class="card-badge-featured absolute top-3 left-3 bg-orange-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-sunset text-white text-[7px]"></i>
+                        Sunset
+                    </div>
+                </div>
+                <div class="card-content p-4 md:p-5">
+                    <h3 class="card-title text-lg md:text-xl font-bold text-gray-800 group-hover:text-indigo-700 transition duration-300">Santorini</h3>
+                    <div class="card-meta flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 5–7 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–4 ppl</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-suitcase text-indigo-400"></i> 4 tours</span>
+                    </div>
+                    <p class="card-description text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        White-washed buildings, blue-domed churches, and breathtaking sunsets over the Aegean Sea.
+                    </p>
+                    <div class="card-footer flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <div class="card-price">
+                            <span class="text-xl md:text-2xl font-extrabold text-indigo-700">$529</span>
+                            <span class="text-[10px] text-gray-400 font-medium"> / person</span>
+                        </div>
+                        <button class="book-now-btn bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[100px] md:min-w-[120px]">
+                            <span class="btn-text inline-flex items-center gap-2">
+                                Book now <i class="fa-solid fa-arrow-right"></i>
+                            </span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl">✈️</span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /destinations-grid -->
+
+        <!-- ===== সেকশন ফুটার ===== -->
+        <div class="section-footer text-center mt-10 md:mt-14">
+            <a href="#all-destinations" class="section-cta inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm text-indigo-700 border-2 border-indigo-200 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300 font-semibold px-7 md:px-9 py-2.5 md:py-3.5 rounded-full shadow-md hover:shadow-xl group text-sm md:text-base">
+                <span>View all destinations</span>
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+            </a>
+        </div>
+
+    </div><!-- /max-w-7xl -->
+</section>
+
+<!-- ===== প্লেন ফ্লাই অ্যানিমেশন স্টাইল ===== -->
+<style>
+    /* ——— মোবাইল স্ক্রল ঠিক ——— */
+    .destinations-section {
+        scroll-margin-top: 80px;
+        overflow-x: hidden;
+    }
+    .destinations-grid {
+        overflow: visible;
+    }
+
+    /* ——— হেডিং সাইজ ঠিক ——— */
+    .section-title {
+        font-size: 1.6rem;
+        /* ২৫.৬px - ছোট */
+    }
+    @media (min-width: 640px) {
+        .section-title {
+            font-size: 2rem;
+            /* ৩২px */
+        }
+    }
+    @media (min-width: 768px) {
+        .section-title {
+            font-size: 2.5rem;
+            /* ৪০px */
+        }
+    }
+    @media (min-width: 1024px) {
+        .section-title {
+            font-size: 3rem;
+            /* ৪৮px */
+        }
+    }
+
+    /* ——— কার্ড হোভার ——— */
+    .destination-card {
+        transform: translateY(0);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+    }
+    .destination-card:hover {
+        transform: translateY(-6px);
+    }
+    .card-image {
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .destination-card:hover .card-image {
+        transform: scale(1.08);
+    }
+
+    /* ——— প্লেন ফ্লাই অ্যানিমেশন ——— */
+    .book-now-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* জেট ট্রেইল (ধোঁয়া) */
+    .jet-trail {
+        background: radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 70%);
+        transform: scaleX(0) translateX(-30%);
+        transform-origin: left center;
+        transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1), opacity 0.6s ease;
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform, opacity;
+    }
+
+    /* অ্যানিমেশন চলাকালীন */
+    .book-now-btn.flying {
+        pointer-events: none;
+    }
+
+    .book-now-btn.flying .jet-trail {
+        opacity: 1;
+        transform: scaleX(4) translateX(50%);
+        transition: transform 0.9s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.5s ease 0.2s;
+    }
+
+    .book-now-btn.flying .btn-text {
+        animation: textFlyOut 0.5s ease forwards;
+    }
+
+    .book-now-btn.flying .plane-icon {
+        animation: planeFly 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+        opacity: 1;
+    }
+
+    @keyframes textFlyOut {
+        0% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+        30% {
+            opacity: 1;
+            transform: translateX(-10px) scale(0.9);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-60px) scale(0.5);
+        }
+    }
+
+    @keyframes planeFly {
+        0% {
+            opacity: 0;
+            transform: translateX(-20px) scale(0.5) rotate(-10deg);
+        }
+        20% {
+            opacity: 1;
+            transform: translateX(0) scale(1.1) rotate(0deg);
+        }
+        60% {
+            opacity: 1;
+            transform: translateX(40px) scale(1.3) rotate(5deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(120px) scale(1.6) rotate(10deg);
+        }
+    }
+
+    /* রিসেট (পরবর্তী ক্লিকের জন্য) */
+    .book-now-btn.flying-reset {
+        pointer-events: auto;
+    }
+    .book-now-btn.flying-reset .jet-trail {
+        opacity: 0;
+        transform: scaleX(0) translateX(-30%);
+        transition: none;
+    }
+    .book-now-btn.flying-reset .btn-text,
+    .book-now-btn.flying-reset .plane-icon {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    .book-now-btn.flying-reset .plane-icon {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.5);
+    }
+
+    /* ——— লাইন ক্ল্যাম্প ——— */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* ——— ডেকোরেটিভ ব্লার ——— */
+    .destinations-section .blur-3xl {
+        filter: blur(100px);
+        opacity: 0.5;
+    }
+
+    /* ——— মোবাইলে ঠিক ——— */
+    @media (max-width: 640px) {
+        .destinations-section {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .destinations-grid {
+            gap: 1rem;
+        }
+        .card-image-wrap {
+            height: 160px;
+        }
+        .card-content {
+            padding: 0.75rem;
+        }
+        .card-title {
+            font-size: 0.95rem;
+        }
+        .card-meta {
+            font-size: 0.55rem;
+            gap: 0.2rem;
+            flex-wrap: wrap;
+        }
+        .card-price {
+            font-size: 0.95rem;
+        }
+        .book-now-btn {
+            font-size: 0.55rem;
+            padding: 0.25rem 0.6rem;
+            min-width: 70px;
+        }
+        .card-badge-featured {
+            font-size: 7px;
+            padding: 0.1rem 0.5rem;
+        }
+        .card-badge-rating {
+            font-size: 8px;
+            padding: 0.15rem 0.5rem;
+        }
+        .card-badge-location {
+            font-size: 0.5rem;
+            padding: 0.1rem 0.4rem;
+        }
+        .section-cta {
+            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+        }
+        .plane-icon {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<!-- ===== প্লেন ফ্লাই অ্যানিমেশন জাভাস্ক্রিপ্ট ===== -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookButtons = document.querySelectorAll('.book-now-btn');
+
+        bookButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // আগের অ্যানিমেশন চললে নতুন শুরু হবে না
+                if (this.classList.contains('flying')) return;
+
+                // 'flying' ক্লাস যোগ
+                this.classList.add('flying');
+
+                // ১.২ সেকেন্ড পর রিসেট
+                const resetTimer = setTimeout(() => {
+                    this.classList.remove('flying');
+                    this.classList.add('flying-reset');
+
+                    // 'flying-reset' সরান (পরবর্তী ক্লিকের জন্য)
+                    setTimeout(() => {
+                        this.classList.remove('flying-reset');
+                    }, 100);
+                }, 1200);
+
+                // আপনি চাইলে এখানে বুকিং পেজে রিডাইরেক্ট করতে পারেন:
+                // window.location.href = '/booking';
+            });
+        });
+    });
+</script><!-- ========================================================= -->
+<!--              C A R O U S E L   S E C T I O N               -->
+<!-- ========================================================= -->
+
+<!-- ---------- ক্যারোসেলের জন্য আলাদা স্টাইল ---------- -->
+<style>
+    /* ——— মূল ক্যারোসেল ——— */
+    .carousel-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background: #f1f5f9;
+        min-height: 420px;
+    }
+
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 21 / 10;
+        min-height: 340px;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-container {
+            aspect-ratio: 16 / 10;
+            min-height: 280px;
+        }
+    }
+    @media (max-width: 480px) {
+        .carousel-container {
+            aspect-ratio: 4 / 3;
+            min-height: 220px;
+        }
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        height: 100%;
+        width: 100%;
+        will-change: transform;
+    }
+
+    .carousel-slide {
+        flex: 0 0 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* ——— গ্রেডিয়েন্ট ওভারলে ——— */
+    .carousel-slide .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg,
+                rgba(15, 23, 42, 0.50) 0%,
+                rgba(30, 58, 95, 0.25) 50%,
+                rgba(15, 23, 42, 0.60) 100%);
+        z-index: 1;
+    }
+
+    /* ——— স্লাইড কন্টেন্ট – কার্ড বাম পাশে, বাটন থেকে দূরে ——— */
+    .slide-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;   /* ← বাম পাশে */
+        padding: 2rem 2rem 2rem 5.5rem; /* ← বামে বাড়তি জায়গা (অ্যারোর জন্য) */
+    }
+
+    @media (max-width: 768px) {
+        .slide-content {
+            padding: 1.5rem 1.5rem 1.5rem 3.5rem; /* মোবাইলে বাম প্যাডিং কম */
+        }
+    }
+    @media (max-width: 480px) {
+        .slide-content {
+            padding: 1rem 1rem 1rem 2.8rem;
+        }
+    }
+
+    /* ——— গ্লাস কার্ড ——— */
+    .slide-card {
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 1.75rem;
+        padding: 2rem 2.5rem;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        text-align: left;
+    }
+
+    .slide-card:hover {
+        transform: scale(1.01);
+    }
+
+    @media (max-width: 768px) {
+        .slide-card {
+            padding: 1.5rem 1.75rem;
+            max-width: 380px;
+            border-radius: 1.25rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .slide-card {
+            padding: 1rem 1.25rem;        /* ← মোবাইলে আরও কম প্যাডিং */
+            max-width: 280px;             /* ← ছোট কার্ড */
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.22);
+        }
+    }
+
+    .slide-card .tag {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(4px);
+        padding: 0.2rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 0.6rem;
+    }
+
+    .slide-card h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 0.25rem;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .slide-card .location {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .slide-card .location i {
+        color: #fcd34d;
+    }
+
+    .slide-card .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #fcd34d;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .slide-card .rating span {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+        font-size: 0.85rem;
+    }
+
+    .slide-card .desc {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .slide-card .btn-explore {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.8rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide-card .btn-explore:hover {
+        background: rgba(255, 255, 255, 0.35);
+        transform: translateX(4px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    /* মোবাইলে টেক্সট সাইজ আরও ছোট */
+    @media (max-width: 768px) {
+        .slide-card h2 {
+            font-size: 1.6rem;
+        }
+        .slide-card .desc {
+            font-size: 0.85rem;
+            -webkit-line-clamp: 2;
+        }
+        .slide-card .btn-explore {
+            font-size: 0.8rem;
+            padding: 0.55rem 1.4rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .slide-card h2 {
+            font-size: 1.2rem;          /* ← ছোট */
+        }
+        .slide-card .location {
+            font-size: 0.7rem;
+        }
+        .slide-card .rating {
+            font-size: 0.7rem;
+        }
+        .slide-card .desc {
+            font-size: 0.7rem;
+            -webkit-line-clamp: 2;
+            margin-bottom: 0.8rem;
+        }
+        .slide-card .btn-explore {
+            font-size: 0.65rem;
+            padding: 0.4rem 1rem;
+        }
+        .slide-card .tag {
+            font-size: 0.55rem;
+            padding: 0.1rem 0.7rem;
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    /* ——— নেভিগেশন অ্যারো ——— */
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        user-select: none;
+    }
+
+    .carousel-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateY(-50%) scale(1.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .carousel-btn:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    .carousel-btn.prev {
+        left: 1.2rem;
+    }
+    .carousel-btn.next {
+        right: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-btn {
+            width: 2.6rem;
+            height: 2.6rem;
+            font-size: 1rem;
+        }
+        .carousel-btn.prev {
+            left: 0.6rem;
+        }
+        .carousel-btn.next {
+            right: 0.6rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .carousel-btn {
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.75rem;
+        }
+        .carousel-btn.prev {
+            left: 0.3rem;
+        }
+        .carousel-btn.next {
+            right: 0.3rem;
+        }
+    }
+
+    /* ——— ডটস ইন্ডিকেটর ——— */
+    .carousel-dots {
+        position: absolute;
+        bottom: 1.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        gap: 0.6rem;
+        padding: 0.5rem 1rem;
+        background: rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .carousel-dots button {
+        width: 0.65rem;
+        height: 0.65rem;
+        border-radius: 9999px;
+        border: none;
+        background: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .carousel-dots button.active {
+        background: #fff;
+        width: 1.8rem;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .carousel-dots button:hover {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    @media (max-width: 480px) {
+        .carousel-dots {
+            gap: 0.4rem;
+            padding: 0.3rem 0.6rem;
+            bottom: 0.6rem;
+        }
+        .carousel-dots button {
+            width: 0.4rem;
+            height: 0.4rem;
+        }
+        .carousel-dots button.active {
+            width: 1.2rem;
+        }
+    }
+
+    /* ——— স্লাইড এন্ট্রি অ্যানিমেশন ——— */
+    .slide-content .slide-card {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .carousel-slide.active .slide-content .slide-card {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+  /*কমন স্টাইল (প্লেন ফ্লাই অ্যানিমেশন) */
+
+    /*  প্লেন ফ্লাই অ্যানিমেশন স্টাইল (স্মুথ)*/
+
+    /* ——— মোবাইল স্ক্রল ঠিক ——— */
+    .destinations-section {
+        scroll-margin-top: 80px;
+        overflow-x: hidden;
+    }
+    .destinations-grid {
+        overflow: visible;
+    }
+
+    /* ——— হেডিং সাইজ ঠিক ——— */
+    .section-title {
+        font-size: 1.6rem;
+    }
+    @media (min-width: 640px) {
+        .section-title { font-size: 2rem; }
+    }
+    @media (min-width: 768px) {
+        .section-title { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+        .section-title { font-size: 3rem; }
+    }
+
+    /* ——— কার্ড হোভার ——— */
+    .destination-card {
+        transform: translateY(0);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+    }
+    .destination-card:hover {
+        transform: translateY(-6px);
+    }
+    .card-image {
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .destination-card:hover .card-image {
+        transform: scale(1.08);
+    }
+
+    /* ——— প্লেন ফ্লাই অ্যানিমেশন (স্মুথ) ——— */
+    .book-now-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* জেট ট্রেইল (ধোঁয়া) */
+    .jet-trail {
+        background: radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+        transform: scaleX(0) translateX(-30%);
+        transform-origin: left center;
+        transition: transform 0.8s cubic-bezier(0.2, 0.85, 0.3, 1.15), opacity 0.6s ease;
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform, opacity;
+    }
+
+    /* অ্যানিমেশন চলাকালীন */
+    .book-now-btn.flying {
+        pointer-events: none;
+    }
+
+    .book-now-btn.flying .jet-trail {
+        opacity: 1;
+        transform: scaleX(4.5) translateX(55%);
+        transition: transform 1s cubic-bezier(0.15, 0.8, 0.2, 1), opacity 0.5s ease 0.2s;
+    }
+
+    .book-now-btn.flying .btn-text {
+        animation: textFlyOut 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    .book-now-btn.flying .plane-icon {
+        animation: planeFly 1s cubic-bezier(0.2, 0.85, 0.3, 1.15) forwards;
+        opacity: 1;
+    }
+
+    @keyframes textFlyOut {
+        0% {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+        35% {
+            opacity: 1;
+            transform: translateX(-12px) scale(0.9);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(-70px) scale(0.4);
+        }
+    }
+
+    @keyframes planeFly {
+        0% {
+            opacity: 0;
+            transform: translateX(-15px) scale(0.6) rotate(-15deg);
+        }
+        25% {
+            opacity: 1;
+            transform: translateX(5px) scale(1.2) rotate(0deg);
+        }
+        65% {
+            opacity: 1;
+            transform: translateX(45px) scale(1.4) rotate(8deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(130px) scale(1.8) rotate(12deg);
+        }
+    }
+
+    /* রিসেট (পরবর্তী ক্লিকের জন্য) */
+    .book-now-btn.flying-reset {
+        pointer-events: auto;
+    }
+    .book-now-btn.flying-reset .jet-trail {
+        opacity: 0;
+        transform: scaleX(0) translateX(-30%);
+        transition: none;
+    }
+    .book-now-btn.flying-reset .btn-text,
+    .book-now-btn.flying-reset .plane-icon {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    .book-now-btn.flying-reset .plane-icon {
+        opacity: 0;
+        transform: translateX(-15px) scale(0.6);
+    }
+
+    /* ——— লাইন ক্ল্যাম্প ——— */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* ——— ডেকোরেটিভ ব্লার ——— */
+    .destinations-section .blur-3xl {
+        filter: blur(100px);
+        opacity: 0.5;
+    }
+
+    /* ——— মোবাইলে ঠিক ——— */
+    @media (max-width: 640px) {
+        .destinations-section {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .destinations-grid {
+            gap: 1rem;
+        }
+        .card-image-wrap {
+            height: 160px;
+        }
+        .card-content {
+            padding: 0.75rem;
+        }
+        .card-title {
+            font-size: 0.95rem;
+        }
+        .card-meta {
+            font-size: 0.55rem;
+            gap: 0.2rem;
+            flex-wrap: wrap;
+        }
+        .card-price {
+            font-size: 0.95rem;
+        }
+        .book-now-btn {
+            font-size: 0.55rem;
+            padding: 0.25rem 0.6rem;
+            min-width: 70px;
+        }
+        .card-badge-featured {
+            font-size: 7px;
+            padding: 0.1rem 0.5rem;
+        }
+        .card-badge-rating {
+            font-size: 8px;
+            padding: 0.15rem 0.5rem;
+        }
+        .card-badge-location {
+            font-size: 0.5rem;
+            padding: 0.1rem 0.4rem;
+        }
+        .section-cta {
+            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+        }
+        .plane-icon {
+            font-size: 0.9rem;
+        }
+    }
+    /* স্ক্রল ঠিক করতে */
+    .destinations-section,
+    .packages-section {
+        scroll-margin-top: 90px;
+        overflow: hidden;
+    }
+
+    /* কার্ড হোভার */
+    .group:hover .hover\:-translate-y-1\.5 {
+        transform: translateY(-6px);
+    }
+    .group:hover .hover\:-translate-y-2 {
+        transform: translateY(-8px);
+    }
+
+    /* প্লেন ফ্লাই অ্যানিমেশন (কমন) */
+    .book-now-btn,
+    .book-package-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .jet-trail {
+        background: radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.7) 0%, transparent 70%);
+        transform: scaleX(0) translateX(-30%);
+        transform-origin: left center;
+        transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1), opacity 0.6s ease;
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform, opacity;
+    }
+    .book-now-btn.flying,
+    .book-package-btn.flying {
+        pointer-events: none;
+    }
+    .book-now-btn.flying .jet-trail,
+    .book-package-btn.flying .jet-trail {
+        opacity: 1;
+        transform: scaleX(4) translateX(50%);
+        transition: transform 0.9s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.5s ease 0.2s;
+    }
+    .book-now-btn.flying .btn-text,
+    .book-package-btn.flying .btn-text {
+        animation: textFlyOut 0.5s ease forwards;
+    }
+    .book-now-btn.flying .plane-icon,
+    .book-package-btn.flying .plane-icon {
+        animation: planeFly 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+        opacity: 1;
+    }
+    @keyframes textFlyOut {
+        0% { opacity: 1; transform: translateX(0) scale(1); }
+        30% { opacity: 1; transform: translateX(-10px) scale(0.9); }
+        100% { opacity: 0; transform: translateX(-60px) scale(0.5); }
+    }
+    @keyframes planeFly {
+        0% { opacity: 0; transform: translateX(-20px) scale(0.5) rotate(-10deg); }
+        20% { opacity: 1; transform: translateX(0) scale(1.1) rotate(0deg); }
+        60% { opacity: 1; transform: translateX(40px) scale(1.3) rotate(5deg); }
+        100% { opacity: 0; transform: translateX(120px) scale(1.6) rotate(10deg); }
+    }
+    .book-now-btn.flying-reset,
+    .book-package-btn.flying-reset {
+        pointer-events: auto;
+    }
+    .book-now-btn.flying-reset .jet-trail,
+    .book-package-btn.flying-reset .jet-trail {
+        opacity: 0;
+        transform: scaleX(0) translateX(-30%);
+        transition: none;
+    }
+    .book-now-btn.flying-reset .btn-text,
+    .book-now-btn.flying-reset .plane-icon,
+    .book-package-btn.flying-reset .btn-text,
+    .book-package-btn.flying-reset .plane-icon {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    .book-now-btn.flying-reset .plane-icon,
+    .book-package-btn.flying-reset .plane-icon {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.5);
+    }
+
+    /* লাইন ক্ল্যাম্প */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* ভিউ ডিটেইলস হোভার */
+    .view-details-btn {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .view-details-btn:hover {
+        transform: translateX(2px);
+    }
+
+    /* মোবাইলে অ্যাডজাস্ট */
+    @media (max-width: 640px) {
+        .destinations-section,
+        .packages-section {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .grid {
+            gap: 1rem;
+        }
+        .group .relative.h-48 {
+            height: 160px;
+        }
+        .group .p-4 {
+            padding: 0.75rem;
+        }
+        .group .text-xl {
+            font-size: 0.95rem;
+        }
+        .group .text-3xl {
+            font-size: 1.5rem;
+        }
+        .book-now-btn,
+        .book-package-btn {
+            font-size: 0.6rem;
+            padding: 0.25rem 0.6rem;
+            min-width: 70px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+        }
+        .section-header {
+            margin-bottom: 2rem;
+        }
+    }
+
+    
+ /*স্টোরি সেকশনের জন্য স্টাইল */
+    .stories-section {
+        scroll-margin-top: 90px;
+        overflow: hidden;
+    }
+
+    .story-card {
+        transform: translateY(0);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+    }
+    .story-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .story-card .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* রিড মোর বাটন অ্যানিমেশন */
+    .read-more-btn .fa-arrow-right {
+        transition: transform 0.25s ease;
+    }
+    .read-more-btn:hover .fa-arrow-right {
+        transform: translateX(4px);
+    }
+
+    /* মোবাইলে অ্যাডজাস্ট */
+    @media (max-width: 640px) {
+        .stories-section {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .stories-section .grid {
+            gap: 1rem;
+        }
+        .story-card .relative.h-48 {
+            height: 160px;
+        }
+        .story-card .p-4 {
+            padding: 0.75rem;
+        }
+        .story-card .text-lg {
+            font-size: 0.95rem;
+        }
+        .section-title {
+            font-size: 1.8rem;
+        }
+        .section-header {
+            margin-bottom: 2rem;
+        }
+        .story-card .flex-wrap.gap-1\.5 {
+            gap: 0.3rem;
+        }
+        .story-card .text-xs.font-medium.text-gray-700 {
+            font-size: 0.6rem;
+        }
+        .story-card .text-\[10px\].text-gray-400 {
+            font-size: 0.55rem;
+        }
+        .story-card .text-\[11px\].md\:text-xs {
+            font-size: 0.65rem;
+        }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+        .story-card .relative.h-48 {
+            height: 180px;
+        }
+    }
+ 
+    .copyright-footer {
+        scroll-margin-top: 90px;
+    }
+    @media (max-width: 640px) {
+        .copyright-footer .flex-col {
+            gap: 0.5rem;
+        }
+        .copyright-footer .flex.items-center.gap-2 {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    .back-to-top-btn {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        user-select: none;
+    }
+    .back-to-top-btn.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .back-to-top-btn:hover {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 8px 32px rgba(79, 70, 229, 0.2);
+        border-color: rgba(79, 70, 229, 0.3);
+    }
+    .back-to-top-btn:active {
+        transform: scale(0.92);
+    }
+
+    /* ডার্ক মোড সাপোর্ট (ঐচ্ছিক) */
+    @media (prefers-color-scheme: dark) {
+        .back-to-top-btn {
+            background: rgba(31, 41, 55, 0.85);
+            backdrop-filter: blur(12px);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #818cf8;
+        }
+        .back-to-top-btn:hover {
+            background: rgba(55, 65, 81, 0.9);
+            border-color: rgba(129, 140, 248, 0.3);
+            color: #a5b4fc;
+        }
+    }
+
+    /* মোবাইলে সাইজ ছোট */
+    @media (max-width: 640px) {
+        .back-to-top-btn {
+            width: 2.75rem;
+            height: 2.75rem;
+            bottom: 1.25rem;
+            right: 1.25rem;
+        }
+        .back-to-top-btn i {
+            font-size: 0.9rem;
+        }
+    }
+    /* প্রিলোডার – ডিফল্ট visible */
+    .preloader {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
+    /* লুকানোর ক্লাস (জাভাস্ক্রিপ্ট যোগ করবে) */
+    .preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    /* স্পিনার অ্যানিমেশন */
+    .animate-spin-slow {
+        animation: spin 1.2s linear infinite;
+    }
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* ডটস বাউন্স */
+    .animate-bounce {
+        animation: bounce 1.2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+        40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* মোবাইলে অ্যাডজাস্ট */
+    @media (max-width: 640px) {
+        .loader-spinner {
+            width: 64px;
+            height: 64px;
+        }
+        .loader-spinner .text-3xl {
+            font-size: 1.5rem;
+        }
+        .loader-content .text-3xl {
+            font-size: 2rem;
+        }
+    }
+
+  </style>
+</head>
+<body>
+<!-- ================================================================
+     প্র ো  ফ ে  শ  ন  া  ল   ল ো  ড ে  র  
+     ================================================================ -->
+<div id="preloader" class="preloader fixed inset-0 z-[9999] flex items-center justify-center bg-white/90 backdrop-blur-md transition-all duration-700 ease-in-out">
+
+    <div class="loader-content text-center">
+
+        <!-- স্পিনার + আইকন -->
+        <div class="loader-spinner relative w-20 h-20 mx-auto mb-5">
+            <div class="absolute inset-0 rounded-full border-4 border-indigo-200/50 animate-spin"></div>
+            <div class="absolute inset-[6px] rounded-full border-4 border-t-indigo-600 border-r-transparent border-b-indigo-300 border-l-transparent animate-spin-slow"></div>
+            <div class="absolute inset-0 flex items-center justify-center text-3xl text-indigo-600">
+                <i class="fa-solid fa-plane"></i>
+            </div>
+        </div>
+
+        <!-- ব্র্যান্ড নাম -->
+        <div class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-indigo-700 to-sky-500 bg-clip-text text-transparent tracking-tight">
+            Velora
+        </div>
+        <div class="text-xs text-gray-400 mt-1 font-light tracking-widest uppercase">
+            Discover the world
+        </div>
+
+        <!-- লোডিং ডটস -->
+        <div class="flex justify-center gap-1.5 mt-4">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-bounce [animation-delay:0s]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:0.15s]"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-bounce [animation-delay:0.3s]"></span>
+        </div>
+
+    </div>
+</div>
+
+
+
+  <nav class="glass-navbar">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- মোবাইলে py-1.5 (আরও কম), ডেস্কটপে py-4 -->
+      <div class="flex justify-between items-center py-1.5 md:py-4">
+
+        <!-- ===== লোগো ===== -->
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-globe text-indigo-500 text-xl md:text-2xl drop-shadow-sm"></i>
+          <span class="font-extrabold text-xl md:text-2xl tracking-tight bg-gradient-to-r from-indigo-700 to-sky-600 bg-clip-text text-transparent">
+            Velora
+          </span>
+          <span class="hidden sm:inline-block text-xs font-medium text-indigo-400 bg-indigo-50/60 px-2 py-0.5 rounded-full">
+            travel
+          </span>
+        </div>
+
+        <!-- ===== ডেস্কটপ মেনু ===== -->
+        <div class="hidden md:flex items-center space-x-8 lg:space-x-10 text-gray-700 font-medium">
+          <a href="index.html" class="hover:text-indigo-600 transition text-[15px] font-semibold">Home</a>
+          <a href="#destinations" class="hover:text-indigo-600 transition">Destinations</a>
+          <a href="#packages" class="hover:text-indigo-600 transition">Packages</a>
+          <a href="#stories" class="hover:text-indigo-600 transition">Stories</a>
+          <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+          <button class="bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md hover:bg-indigo-700 transition btn-primary flex items-center gap-2">
+            <i class="fa-regular fa-calendar-check"></i> Plan trip
+          </button>
+
+          <!-- প্রোফাইল আইকন (ডেস্কটপে ড্রপডাউন) -->
+          <div class="relative ml-1">
+            <button id="profileIconBtnDesktop"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-white/70 text-indigo-600 hover:bg-indigo-50 transition shadow-sm focus:outline-none">
+              <i class="fa-regular fa-circle-user text-2xl"></i>
+            </button>
+            <div id="profileDropdownDesktop"
+                 class="absolute right-0 mt-3 w-56 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/60 p-2 hidden profile-dropdown z-50">
+              <div class="flex items-center gap-3 px-3 py-2 border-b border-gray-100">
+                <i class="fa-regular fa-user-circle text-2xl text-indigo-500"></i>
+                <div><p class="text-sm font-semibold">Alex Morgan</p><p class="text-xs text-gray-500">alex@velora.com</p></div>
+              </div>
+              <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50 rounded-xl transition">
+                <i class="fa-regular fa-compass w-5"></i> My bookings
+              </a>
+              <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50 rounded-xl transition">
+                <i class="fa-regular fa-heart w-5"></i> Wishlist
+              </a>
+              <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-indigo-50 rounded-xl transition">
+                <i class="fa-regular fa-user w-5"></i> Account settings
+              </a>
+              <hr class="my-1 border-gray-200" />
+              <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-xl transition">
+                <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> Sign out
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== মোবাইল হ্যামবার্গার ===== -->
+        <div class="md:hidden flex items-center gap-3">
+          <!-- মোবাইলের জন্য প্রোফাইল আইকন (আলাদা) -->
+          <button id="profileIconBtnMobile"
+                  class="flex items-center justify-center w-8 h-8 rounded-full bg-white/50 backdrop-blur-sm border border-white/70 text-indigo-600 hover:bg-indigo-50 transition shadow-sm focus:outline-none">
+            <i class="fa-regular fa-circle-user text-xl"></i>
+          </button>
+
+          <button id="menuToggle" class="text-gray-700 focus:outline-none text-2xl p-1">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== মোবাইল মেনু ===== -->
+      <div id="mobileMenu" class="md:hidden mobile-menu rounded-2xl bg-white/80 backdrop-blur-md border border-white/60 shadow-lg px-5 py-2 flex flex-col space-y-4">
+        <a href="index.html" class="py-2 text-gray-800 font-medium hover:text-indigo-600 transition flex items-center gap-2">
+          <i class="fa-solid fa-house-chimney text-indigo-400 w-5"></i> Home
+        </a>
+        <a href="#destinations" class="py-2 text-gray-800 font-medium hover:text-indigo-600 transition flex items-center gap-2">
+          <i class="fa-solid fa-location-dot text-indigo-400 w-5"></i> Destinations
+        </a>
+        <a href="#packages" class="py-2 text-gray-800 font-medium hover:text-indigo-600 transition flex items-center gap-2">
+          <i class="fa-solid fa-box-open text-indigo-400 w-5"></i> Packages
+        </a>
+        <a href="#stories" class="py-2 text-gray-800 font-medium hover:text-indigo-600 transition flex items-center gap-2">
+          <i class="fa-solid fa-camera-retro text-indigo-400 w-5"></i> Stories
+        </a>
+        <a href="#contact" class="py-2 text-gray-800 font-medium hover:text-indigo-600 transition flex items-center gap-2">
+          <i class="fa-regular fa-message text-indigo-400 w-5"></i> Contact
+        </a>
+        <button class="bg-indigo-600 text-white w-full py-2.5 rounded-xl font-semibold mt-2 shadow-md flex items-center justify-center gap-2">
+          <i class="fa-regular fa-compass"></i> Start journey
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================= -->
+  <!--        ম ো  ব া  ই  ল   প ্  র ো  ফ া  ই  ল   স ে  ক ্ শ  ন      -->
+  <!-- ========================================================= -->
+  <section id="mobileProfileSection" class="hidden px-6 py-6 bg-white/80 backdrop-blur-sm border-b border-gray-200/60">
+    <div class="max-w-7xl mx-auto">
+      <div class="glass-card rounded-2xl p-6 shadow-lg bg-white/90">
+        <div class="flex items-center justify-between border-b border-gray-200 pb-4 mb-4">
+          <div class="flex items-center gap-4">
+            <i class="fa-regular fa-circle-user text-5xl text-indigo-500"></i>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-800">Alex Morgan</h3>
+              <p class="text-gray-500">alex@velora.com</p>
+            </div>
+          </div>
+          <button id="closeProfileMobile" class="text-gray-400 hover:text-gray-700 text-2xl">
+            <i class="fa-regular fa-circle-xmark"></i>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+          <div class="flex items-center gap-3 p-3 bg-indigo-50/50 rounded-xl">
+            <i class="fa-regular fa-compass text-indigo-500 text-xl"></i>
+            <div><p class="text-sm font-medium">My Bookings</p><p class="text-xs text-gray-500">3 upcoming trips</p></div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-rose-50/50 rounded-xl">
+            <i class="fa-regular fa-heart text-rose-500 text-xl"></i>
+            <div><p class="text-sm font-medium">Wishlist</p><p class="text-xs text-gray-500">12 saved destinations</p></div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-emerald-50/50 rounded-xl">
+            <i class="fa-regular fa-credit-card text-emerald-500 text-xl"></i>
+            <div><p class="text-sm font-medium">Payment Methods</p><p class="text-xs text-gray-500">Visa, Mastercard</p></div>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-amber-50/50 rounded-xl">
+            <i class="fa-regular fa-user text-amber-500 text-xl"></i>
+            <div><p class="text-sm font-medium">Account Settings</p><p class="text-xs text-gray-500">Edit profile</p></div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-gray-200 flex justify-end">
+          <button class="text-red-600 hover:bg-red-50 px-6 py-2 rounded-xl transition flex items-center gap-2 text-sm font-medium">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- ========== ক্যারোসেল এইচটিএমএল ========== -->
+<section class="carousel-section">
+    <div class="carousel-container" id="carouselContainer">
+
+        <!-- ট্র্যাক -->
+        <div class="carousel-track" id="carouselTrack">
+
+            <!-- ===== স্লাইড ১ – বালি ===== -->
+            <div class="carousel-slide active" data-index="0">
+                <img src="img/pexels-jess-ho-51667983-7980413.jpg" alt="Bali, Indonesia" loading="lazy" />
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-card">
+                        <span class="tag"><i class="fa-regular fa-star mr-1"></i> Featured</span>
+                        <h2>Bali</h2>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> Indonesia</div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9 (2.3k reviews)</span>
+                        </div>
+                        <p class="desc">Lush rice terraces, volcanic mountains &amp; vibrant culture — the Island of the Gods awaits.</p>
+                        <button class="btn-explore">Explore <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== স্লাইড ২ – প্যারিস ===== -->
+            <div class="carousel-slide" data-index="1">
+                <img src="img/pexels-kokorevas-29731407.jpg" alt="Paris, France" loading="lazy" />
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-card">
+                        <span class="tag"><i class="fa-regular fa-heart mr-1"></i> Romantic</span>
+                        <h2>Paris</h2>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> France</div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.8 (1.8k reviews)</span>
+                        </div>
+                        <p class="desc">The City of Light beckons with iconic landmarks, world-class art, and timeless romance.</p>
+                        <button class="btn-explore">Explore <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== স্লাইড ৩ – মালদ্বীপ ===== -->
+            <div class="carousel-slide" data-index="2">
+                <img src="https://picsum.photos/seed/maldives/1600/800" alt="Maldives" loading="lazy" />
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-card">
+                        <span class="tag"><i class="fa-regular fa-sun mr-1"></i> Luxury</span>
+                        <h2>Maldives</h2>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> Indian Ocean</div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9 (1.5k reviews)</span>
+                        </div>
+                        <p class="desc">Overwater bungalows, crystal-clear lagoons &amp; pristine white sands — paradise found.</p>
+                        <button class="btn-explore">Explore <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== স্লাইড ৪ – সুইজারল্যান্ড ===== -->
+            <div class="carousel-slide" data-index="3">
+                <img src="https://picsum.photos/seed/swiss/1600/800" alt="Switzerland" loading="lazy" />
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-card">
+                        <span class="tag"><i class="fa-regular fa-snowflake mr-1"></i> Alpine</span>
+                        <h2>Switzerland</h2>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> Alps</div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.7 (1.2k reviews)</span>
+                        </div>
+                        <p class="desc">Majestic peaks, serene lakes &amp; charming villages — a fairytale escape in every season.</p>
+                        <button class="btn-explore">Explore <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== স্লাইড ৫ – কিয়োটো ===== -->
+            <div class="carousel-slide" data-index="4">
+                <img src="https://picsum.photos/seed/kyoto/1600/800" alt="Kyoto, Japan" loading="lazy" />
+                <div class="overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-card">
+                        <span class="tag"><i class="fa-regular fa-cherry-blossom mr-1"></i> Cultural</span>
+                        <h2>Kyoto</h2>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> Japan</div>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9 (2.0k reviews)</span>
+                        </div>
+                        <p class="desc">Ancient temples, zen gardens &amp; geisha districts — where tradition meets tranquility.</p>
+                        <button class="btn-explore">Explore <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /carousel-track -->
+
+        <!-- ===== নেভিগেশন অ্যারো ===== -->
+        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous slide">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="Next slide">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- ===== ডটস ===== -->
+        <div class="carousel-dots" id="dotsContainer">
+            <button class="active" data-index="0" aria-label="Slide 1"></button>
+            <button data-index="1" aria-label="Slide 2"></button>
+            <button data-index="2" aria-label="Slide 3"></button>
+            <button data-index="3" aria-label="Slide 4"></button>
+            <button data-index="4" aria-label="Slide 5"></button>
+        </div>
+
+    </div>
+</section>
+<!-- ================================================================
+     প  প ু  ল া  র   ড ে  স  ট ি  ন ে  শ  ন   (৬টি কার্ড + হোয়াইট থিম)
+     ================================================================ -->
+<section id="destinations" class="destinations-section py-12 md:py-16 lg:py-20 px-6 md:px-8 lg:px-12 bg-white relative" style="scroll-margin-top: 90px; overflow: hidden;">
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- ===== সেকশন হেডার ===== -->
+        <div class="text-center mb-8 md:mb-12">
+            <div class="inline-flex items-center gap-2 bg-indigo-50/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-indigo-200/40 shadow-sm">
+                <i class="fa-regular fa-compass text-indigo-500 text-[10px]"></i>
+                <span class="text-indigo-700 font-semibold text-[10px] tracking-widest uppercase">Explore</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold mt-3 bg-gradient-to-r from-indigo-700 via-indigo-600 to-sky-500 bg-clip-text text-transparent leading-tight">
+                Popular Destinations
+            </h2>
+            <p class="text-gray-500 mt-2 max-w-2xl mx-auto text-xs sm:text-sm md:text-base font-light">
+                Curated escapes for every traveller — from sun-kissed beaches to cultural wonders
+            </p>
+        </div>
+
+        <!-- ===== ডেস্টিনেশন গ্রিড (৬টি কার্ড) ===== -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+
+            <!-- কার্ড ১ – বালি -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-indigo-300/50 hover:-translate-y-1.5">
+                <div class="relative h-48 md:h-56 lg:h-60 overflow-hidden">
+                    <img src="https://picsum.photos/seed/bali2/600/450" alt="Bali" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.9 <span class="text-gray-400 font-normal text-[8px]">(2.3k)</span>
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i> Indonesia
+                    </div>
+                    <div class="absolute top-3 left-3 bg-amber-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-star text-white text-[7px]"></i> Featured
+                    </div>
+                </div>
+                <div class="p-4 md:p-5">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-indigo-700 transition">Bali</h3>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 7–10 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–6 ppl</span>
+                    </div>
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        Tropical paradise with stunning rice terraces, volcanic landscapes, and rich cultural heritage.
+                    </p>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <span class="text-xl md:text-2xl font-extrabold text-indigo-700">$499 <span class="text-[10px] text-gray-400 font-medium">/ person</span></span>
+                        <button class="book-now-btn bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[90px] md:min-w-[110px]">
+                            <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-base md:text-lg"><i class="fa-solid fa-plane"></i></span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কার্ড ২ – প্যারিস -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-rose-300/50 hover:-translate-y-1.5">
+                <div class="relative h-48 md:h-56 lg:h-60 overflow-hidden">
+                    <img src="https://picsum.photos/seed/paris2/600/450" alt="Paris" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.8 <span class="text-gray-400 font-normal text-[8px]">(1.8k)</span>
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i> France
+                    </div>
+                    <div class="absolute top-3 left-3 bg-rose-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-heart text-white text-[7px]"></i> Romantic
+                    </div>
+                </div>
+                <div class="p-4 md:p-5">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-rose-700 transition">Paris</h3>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 5–8 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–4 ppl</span>
+                    </div>
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        The City of Light — iconic landmarks, world-class art, exquisite cuisine, and timeless romance.
+                    </p>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <span class="text-xl md:text-2xl font-extrabold text-rose-700">$649 <span class="text-[10px] text-gray-400 font-medium">/ person</span></span>
+                        <button class="book-now-btn bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[90px] md:min-w-[110px]">
+                            <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-base md:text-lg"><i class="fa-solid fa-plane"></i></span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কার্ড ৩ – মালদ্বীপ -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-emerald-300/50 hover:-translate-y-1.5">
+                <div class="relative h-48 md:h-56 lg:h-60 overflow-hidden">
+                    <img src="https://picsum.photos/seed/maldives2/600/450" alt="Maldives" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.9 <span class="text-gray-400 font-normal text-[8px]">(1.5k)</span>
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i> Indian Ocean
+                    </div>
+                    <div class="absolute top-3 left-3 bg-emerald-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-sun text-white text-[7px]"></i> Luxury
+                    </div>
+                </div>
+                <div class="p-4 md:p-5">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-emerald-700 transition">Maldives</h3>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 6–9 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–8 ppl</span>
+                    </div>
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        Overwater bungalows, crystal-clear lagoons, and pristine white sandy beaches — paradise found.
+                    </p>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <span class="text-xl md:text-2xl font-extrabold text-emerald-700">$899 <span class="text-[10px] text-gray-400 font-medium">/ person</span></span>
+                        <button class="book-now-btn bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[90px] md:min-w-[110px]">
+                            <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-base md:text-lg"><i class="fa-solid fa-plane"></i></span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কার্ড ৪ – সুইজারল্যান্ড -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-blue-300/50 hover:-translate-y-1.5">
+                <div class="relative h-48 md:h-56 lg:h-60 overflow-hidden">
+                    <img src="https://picsum.photos/seed/swiss2/600/450" alt="Switzerland" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.7 <span class="text-gray-400 font-normal text-[8px]">(1.2k)</span>
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i> Alps
+                    </div>
+                    <div class="absolute top-3 left-3 bg-blue-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-snowflake text-white text-[7px]"></i> Alpine
+                    </div>
+                </div>
+                <div class="p-4 md:p-5">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-blue-700 transition">Switzerland</h3>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 8–12 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–6 ppl</span>
+                    </div>
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        Majestic peaks, serene lakes, charming villages — a fairytale escape in every season.
+                    </p>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <span class="text-xl md:text-2xl font-extrabold text-blue-700">$749 <span class="text-[10px] text-gray-400 font-medium">/ person</span></span>
+                        <button class="book-now-btn bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[90px] md:min-w-[110px]">
+                            <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-base md:text-lg"><i class="fa-solid fa-plane"></i></span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কার্ড ৫ – কিয়োটো -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-purple-300/50 hover:-translate-y-1.5">
+                <div class="relative h-48 md:h-56 lg:h-60 overflow-hidden">
+                    <img src="https://picsum.photos/seed/kyoto2/600/450" alt="Kyoto" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.9 <span class="text-gray-400 font-normal text-[8px]">(2.0k)</span>
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i> Japan
+                    </div>
+                    <div class="absolute top-3 left-3 bg-purple-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-cherry-blossom text-white text-[7px]"></i> Cultural
+                    </div>
+                </div>
+                <div class="p-4 md:p-5">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-purple-700 transition">Kyoto</h3>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 6–10 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–5 ppl</span>
+                    </div>
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        Ancient temples, zen gardens, traditional tea houses, and geisha districts — timeless beauty.
+                    </p>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <span class="text-xl md:text-2xl font-extrabold text-purple-700">$599 <span class="text-[10px] text-gray-400 font-medium">/ person</span></span>
+                        <button class="book-now-btn bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[90px] md:min-w-[110px]">
+                            <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-base md:text-lg"><i class="fa-solid fa-plane"></i></span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কার্ড ৬ – সান্তোরিনি -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-orange-300/50 hover:-translate-y-1.5">
+                <div class="relative h-48 md:h-56 lg:h-60 overflow-hidden">
+                    <img src="https://picsum.photos/seed/santorini2/600/450" alt="Santorini" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.8 <span class="text-gray-400 font-normal text-[8px]">(1.6k)</span>
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-yellow-300 text-[10px]"></i> Greece
+                    </div>
+                    <div class="absolute top-3 left-3 bg-orange-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-sunset text-white text-[7px]"></i> Sunset
+                    </div>
+                </div>
+                <div class="p-4 md:p-5">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-orange-700 transition">Santorini</h3>
+                    <div class="flex items-center gap-3 mt-1 text-[10px] md:text-xs text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-indigo-400"></i> 5–7 days</span>
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-user text-indigo-400"></i> 2–4 ppl</span>
+                    </div>
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-1.5 leading-relaxed line-clamp-2">
+                        White-washed buildings, blue-domed churches, and breathtaking sunsets over the Aegean Sea.
+                    </p>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-200/60">
+                        <span class="text-xl md:text-2xl font-extrabold text-orange-700">$529 <span class="text-[10px] text-gray-400 font-medium">/ person</span></span>
+                        <button class="book-now-btn bg-orange-600 hover:bg-orange-700 active:scale-95 text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden min-w-[90px] md:min-w-[110px]">
+                            <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="plane-icon absolute opacity-0 pointer-events-none text-base md:text-lg"><i class="fa-solid fa-plane"></i></span>
+                            <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /grid -->
+
+        <!-- ফুটার -->
+        <div class="text-center mt-10 md:mt-14">
+            <a href="#all-destinations" class="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm text-indigo-700 border-2 border-indigo-200 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300 font-semibold px-7 md:px-9 py-2.5 md:py-3.5 rounded-full shadow-md hover:shadow-xl group text-sm md:text-base">
+                <span>View all destinations</span>
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     প ্ র ো  ফ ে  শ  ন  া  ল   প ্ ল ে  ন  প ্যা  ক ে  জ   (হোয়াইট থিম + ডেকোরেশন বাদ)
+     ================================================================ -->
+<section id="packages" class="packages-section py-12 md:py-16 lg:py-20 px-6 md:px-8 lg:px-12 bg-white relative" style="scroll-margin-top: 90px; overflow: hidden;">
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- ===== সেকশন হেডার ===== -->
+        <div class="text-center mb-8 md:mb-12">
+            <div class="inline-flex items-center gap-2 bg-indigo-50/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-indigo-200/40 shadow-sm">
+                <i class="fa-regular fa-gem text-indigo-500 text-[10px]"></i>
+                <span class="text-indigo-700 font-semibold text-[10px] tracking-widest uppercase">Exclusive Deals</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold mt-3 bg-gradient-to-r from-indigo-700 via-indigo-600 to-sky-500 bg-clip-text text-transparent leading-tight">
+                Travel Packages
+            </h2>
+            <p class="text-gray-500 mt-2 max-w-2xl mx-auto text-xs sm:text-sm md:text-base font-light">
+                Curated experiences designed for every kind of traveller — luxury, adventure, and everything in between
+            </p>
+        </div>
+
+        <!-- ===== প্যাকেজ গ্রিড (৬টি) ===== -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+
+            <!-- প্যাকেজ ১ – ফ্যামিলি -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-indigo-300/50 hover:-translate-y-2">
+                <div class="absolute top-4 right-4 z-10 bg-emerald-400/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-lg flex items-center gap-1">
+                    <i class="fa-regular fa-star text-white text-[9px]"></i> Best Seller
+                </div>
+                <div class="p-6 md:p-7 pb-0 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-200/50 flex items-center justify-center text-2xl text-indigo-600 shadow-inner border border-white/50">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-indigo-700 transition">Family Escape</h3>
+                        <span class="text-xs text-gray-400 font-medium">7 Days / 6 Nights</span>
+                    </div>
+                </div>
+                <div class="px-6 md:px-7 mt-3 flex items-center gap-3 flex-wrap">
+                    <span class="text-3xl md:text-4xl font-extrabold text-indigo-700">$1,299</span>
+                    <span class="text-sm text-gray-400 font-medium">/ family</span>
+                    <span class="inline-block bg-rose-100/80 text-rose-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-rose-200/50">Save 20%</span>
+                </div>
+                <div class="px-6 md:px-7 mt-2 flex items-center gap-2">
+                    <div class="flex text-yellow-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <span class="text-xs text-gray-500 font-medium">4.7 (234 reviews)</span>
+                </div>
+                <div class="px-6 md:px-7 mt-3 space-y-2.5">
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>4-star family resort with kids' club</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Daily breakfast &amp; 2 dinners included</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Guided nature walks &amp; cultural tours</span></div>
+                </div>
+                <div class="px-6 md:px-7 pb-6 md:pb-7 mt-4 pt-4 border-t border-gray-200/60 flex flex-col gap-3">
+                    <button class="book-package-btn w-full bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-sm md:text-base font-semibold px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden mt-9">
+                        <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl"><i class="fa-solid fa-plane"></i></span>
+                        <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                    </button>
+                    <button class="view-details-btn text-xs text-indigo-600 hover:text-indigo-800 font-medium hover:underline transition text-center">View details →</button>
+                </div>
+            </div>
+
+            <!-- প্যাকেজ ২ – হানিমুন -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-rose-300/50 hover:-translate-y-2">
+                <div class="absolute top-4 right-4 z-10 bg-rose-400/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-lg flex items-center gap-1">
+                    <i class="fa-regular fa-heart text-white text-[9px]"></i> Romantic
+                </div>
+                <div class="p-6 md:p-7 pb-0 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-100 to-rose-200/50 flex items-center justify-center text-2xl text-rose-600 shadow-inner border border-white/50"><i class="fa-solid fa-heart"></i></div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-rose-700 transition">Honeymoon Bliss</h3>
+                        <span class="text-xs text-gray-400 font-medium">5 Days / 4 Nights</span>
+                    </div>
+                </div>
+                <div class="px-6 md:px-7 mt-3 flex items-center gap-3 flex-wrap">
+                    <span class="text-3xl md:text-4xl font-extrabold text-rose-700">$1,899</span>
+                    <span class="text-sm text-gray-400 font-medium">/ couple</span>
+                    <span class="inline-block bg-amber-100/80 text-amber-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200/50">Free Spa</span>
+                </div>
+                <div class="px-6 md:px-7 mt-2 flex items-center gap-2">
+                    <div class="flex text-yellow-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <span class="text-xs text-gray-500 font-medium">4.9 (312 reviews)</span>
+                </div>
+                <div class="px-6 md:px-7 mt-3 space-y-2.5">
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Private villa with ocean view &amp; plunge pool</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Candlelight dinners &amp; champagne breakfast</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Couples spa treatment &amp; sunset cruise</span></div>
+                </div>
+                <div class="px-6 md:px-7 pb-6 md:pb-7 mt-4 pt-4 border-t border-gray-200/60 flex flex-col gap-3">
+                    <button class="book-package-btn w-full bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-sm md:text-base font-semibold px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden">
+                        <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl"><i class="fa-solid fa-plane"></i></span>
+                        <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                    </button>
+                    <button class="view-details-btn text-xs text-rose-600 hover:text-rose-800 font-medium hover:underline transition text-center">View details →</button>
+                </div>
+            </div>
+
+            <!-- প্যাকেজ ৩ – অ্যাডভেঞ্চার -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-amber-300/50 hover:-translate-y-2">
+                <div class="absolute top-4 right-4 z-10 bg-amber-400/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-lg flex items-center gap-1">
+                    <i class="fa-regular fa-compass text-white text-[9px]"></i> Adventure
+                </div>
+                <div class="p-6 md:p-7 pb-0 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-200/50 flex items-center justify-center text-2xl text-amber-600 shadow-inner border border-white/50"><i class="fa-solid fa-mountain"></i></div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-amber-700 transition">Adventure Expedition</h3>
+                        <span class="text-xs text-gray-400 font-medium">10 Days / 9 Nights</span>
+                    </div>
+                </div>
+                <div class="px-6 md:px-7 mt-3 flex items-center gap-3 flex-wrap">
+                    <span class="text-3xl md:text-4xl font-extrabold text-amber-700">$2,499</span>
+                    <span class="text-sm text-gray-400 font-medium">/ person</span>
+                    <span class="inline-block bg-indigo-100/80 text-indigo-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-indigo-200/50">Limited Seats</span>
+                </div>
+                <div class="px-6 md:px-7 mt-2 flex items-center gap-2">
+                    <div class="flex text-yellow-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                    <span class="text-xs text-gray-500 font-medium">4.5 (189 reviews)</span>
+                </div>
+                <div class="px-6 md:px-7 mt-3 space-y-2.5">
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Mountain trekking &amp; river rafting</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Professional guides &amp; safety equipment</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Camping under stars + bonfire nights</span></div>
+                </div>
+                <div class="px-6 md:px-7 pb-6 md:pb-7 mt-4 pt-4 border-t border-gray-200/60 flex flex-col gap-3">
+                    <button class="book-package-btn w-full bg-amber-600 hover:bg-amber-700 active:scale-95 text-white text-sm md:text-base font-semibold px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden">
+                        <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl"><i class="fa-solid fa-plane"></i></span>
+                        <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                    </button>
+                    <button class="view-details-btn text-xs text-amber-600 hover:text-amber-800 font-medium hover:underline transition text-center">View details →</button>
+                </div>
+            </div>
+
+            <!-- প্যাকেজ ৪ – সোলো -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-teal-300/50 hover:-translate-y-2">
+                <div class="absolute top-4 right-4 z-10 bg-teal-400/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-lg flex items-center gap-1">
+                    <i class="fa-regular fa-user text-white text-[9px]"></i> Solo
+                </div>
+                <div class="p-6 md:p-7 pb-0 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-100 to-teal-200/50 flex items-center justify-center text-2xl text-teal-600 shadow-inner border border-white/50"><i class="fa-solid fa-person-hiking"></i></div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-teal-700 transition">Solo Wanderer</h3>
+                        <span class="text-xs text-gray-400 font-medium">6 Days / 5 Nights</span>
+                    </div>
+                </div>
+                <div class="px-6 md:px-7 mt-3 flex items-center gap-3 flex-wrap">
+                    <span class="text-3xl md:text-4xl font-extrabold text-teal-700">$899</span>
+                    <span class="text-sm text-gray-400 font-medium">/ person</span>
+                    <span class="inline-block bg-purple-100/80 text-purple-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-purple-200/50">No single supplement</span>
+                </div>
+                <div class="px-6 md:px-7 mt-2 flex items-center gap-2">
+                    <div class="flex text-yellow-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                    <span class="text-xs text-gray-500 font-medium">4.6 (156 reviews)</span>
+                </div>
+                <div class="px-6 md:px-7 mt-3 space-y-2.5">
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Curated solo-friendly itinerary</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Group activities &amp; free time balanced</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>24/7 support &amp; travel community access</span></div>
+                </div>
+                <div class="px-6 md:px-7 pb-6 md:pb-7 mt-4 pt-4 border-t border-gray-200/60 flex flex-col gap-3">
+                    <button class="book-package-btn w-full bg-teal-600 hover:bg-teal-700 active:scale-95 text-white text-sm md:text-base font-semibold px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden mt-12">
+                        <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl"><i class="fa-solid fa-plane"></i></span>
+                        <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                    </button>
+                    <button class="view-details-btn text-xs text-teal-600 hover:text-teal-800 font-medium hover:underline transition text-center">View details →</button>
+                </div>
+            </div>
+
+            <!-- প্যাকেজ ৫ – লাক্সারি ক্রুজ -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-purple-300/50 hover:-translate-y-2">
+                <div class="absolute top-4 right-4 z-10 bg-purple-400/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-lg flex items-center gap-1">
+                    <i class="fa-regular fa-gem text-white text-[9px]"></i> Premium
+                </div>
+                <div class="p-6 md:p-7 pb-0 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-200/50 flex items-center justify-center text-2xl text-purple-600 shadow-inner border border-white/50"><i class="fa-solid fa-ship"></i></div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition">Luxury Cruise</h3>
+                        <span class="text-xs text-gray-400 font-medium">8 Days / 7 Nights</span>
+                    </div>
+                </div>
+                <div class="px-6 md:px-7 mt-3 flex items-center gap-3 flex-wrap">
+                    <span class="text-3xl md:text-4xl font-extrabold text-purple-700">$3,299</span>
+                    <span class="text-sm text-gray-400 font-medium">/ person</span>
+                    <span class="inline-block bg-amber-100/80 text-amber-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200/50">All-inclusive</span>
+                </div>
+                <div class="px-6 md:px-7 mt-2 flex items-center gap-2">
+                    <div class="flex text-yellow-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <span class="text-xs text-gray-500 font-medium">4.9 (403 reviews)</span>
+                </div>
+                <div class="px-6 md:px-7 mt-3 space-y-2.5">
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>5-star cruise with private balcony suite</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Gourmet dining &amp; premium beverages</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Shore excursions &amp; onboard entertainment</span></div>
+                </div>
+                <div class="px-6 md:px-7 pb-6 md:pb-7 mt-4 pt-4 border-t border-gray-200/60 flex flex-col gap-3">
+                    <button class="book-package-btn w-full bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-sm md:text-base font-semibold px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden mt-14">
+                        <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl"><i class="fa-solid fa-plane"></i></span>
+                        <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                    </button>
+                    <button class="view-details-btn text-xs text-purple-600 hover:text-purple-800 font-medium hover:underline transition text-center">View details →</button>
+                </div>
+            </div>
+
+            <!-- প্যাকেজ ৬ – কালচারাল -->
+            <div class="group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-emerald-300/50 hover:-translate-y-2">
+                <div class="absolute top-4 right-4 z-10 bg-emerald-400/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-white shadow-lg flex items-center gap-1">
+                    <i class="fa-regular fa-flag text-white text-[9px]"></i> Cultural
+                </div>
+                <div class="p-6 md:p-7 pb-0 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-200/50 flex items-center justify-center text-2xl text-emerald-600 shadow-inner border border-white/50"><i class="fa-solid fa-landmark"></i></div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-emerald-700 transition">Cultural Immersion</h3>
+                        <span class="text-xs text-gray-400 font-medium">9 Days / 8 Nights</span>
+                    </div>
+                </div>
+                <div class="px-6 md:px-7 mt-3 flex items-center gap-3 flex-wrap">
+                    <span class="text-3xl md:text-4xl font-extrabold text-emerald-700">$1,699</span>
+                    <span class="text-sm text-gray-400 font-medium">/ person</span>
+                    <span class="inline-block bg-amber-100/80 text-amber-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200/50">Heritage Tour</span>
+                </div>
+                <div class="px-6 md:px-7 mt-2 flex items-center gap-2">
+                    <div class="flex text-yellow-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                    <span class="text-xs text-gray-500 font-medium">4.8 (267 reviews)</span>
+                </div>
+                <div class="px-6 md:px-7 mt-3 space-y-2.5">
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Historical sites &amp; museum visits</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Local cooking classes &amp; artisan workshops</span></div>
+                    <div class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-check-circle text-emerald-500 mt-0.5 text-xs"></i><span>Expert local guides &amp; traditional performances</span></div>
+                </div>
+                <div class="px-6 md:px-7 pb-6 md:pb-7 mt-4 pt-4 border-t border-gray-200/60 flex flex-col gap-3">
+                    <button class="book-package-btn w-full bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-sm md:text-base font-semibold px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden mt-12">
+                        <span class="btn-text inline-flex items-center gap-2">Book now <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="plane-icon absolute opacity-0 pointer-events-none text-lg md:text-xl"><i class="fa-solid fa-plane"></i></span>
+                        <span class="jet-trail absolute inset-0 pointer-events-none opacity-0"></span>
+                    </button>
+                    <button class="view-details-btn text-xs text-emerald-600 hover:text-emerald-800 font-medium hover:underline transition text-center">View details →</button>
+                </div>
+            </div>
+
+        </div><!-- /grid -->
+
+        <!-- ফুটার CTA -->
+        <div class="text-center mt-12 md:mt-16">
+            <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/80 backdrop-blur-md rounded-2xl px-6 md:px-10 py-6 md:py-7 shadow-xl border border-white/70 max-w-3xl mx-auto">
+                <div class="flex items-center gap-3">
+                    <i class="fa-regular fa-circle-check text-emerald-500 text-xl"></i>
+                    <span class="text-sm md:text-base font-medium text-gray-700">Custom packages available</span>
+                </div>
+                <div class="w-px h-8 bg-gray-200 hidden sm:block"></div>
+                <a href="#contact" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 transition text-white font-semibold px-6 md:px-8 py-2.5 md:py-3 rounded-full shadow-md hover:shadow-xl text-sm md:text-base">
+                    <i class="fa-regular fa-message"></i> Talk to an expert
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+<!-- ================================================================
+     ট ্ র ে ভ ে ল   স  ট  র ি  স   স ে  ক  শ  ন   (গল্পের বিভাগ)
+     ================================================================ -->
+<section id="stories" class="stories-section py-12 md:py-16 lg:py-20 px-6 md:px-8 lg:px-12 bg-white relative" style="scroll-margin-top: 90px; overflow: hidden;">
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- ===== সেকশন হেডার ===== -->
+        <div class="text-center mb-8 md:mb-12">
+            <div class="inline-flex items-center gap-2 bg-indigo-50/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-indigo-200/40 shadow-sm">
+                <i class="fa-regular fa-pen-to-square text-indigo-500 text-[10px]"></i>
+                <span class="text-indigo-700 font-semibold text-[10px] tracking-widest uppercase">Travel Diaries</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold mt-3 bg-gradient-to-r from-indigo-700 via-indigo-600 to-sky-500 bg-clip-text text-transparent leading-tight">
+                Travel Stories
+            </h2>
+            <p class="text-gray-500 mt-2 max-w-2xl mx-auto text-xs sm:text-sm md:text-base font-light">
+                Real experiences from real travellers — inspiring your next adventure
+            </p>
+        </div>
+
+        <!-- ===== স্টোরিজ গ্রিড (৬টি কার্ড) ===== -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+            <!-- ====== স্টোরি ১ – বালি ট্রাভেলগ ====== -->
+            <div class="story-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-indigo-300/50 hover:-translate-y-2">
+
+                <div class="relative h-48 md:h-52 lg:h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/bali-story/600/400" alt="Bali Travel" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+                    <!-- ক্যাটাগরি ব্যাজ -->
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-indigo-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-regular fa-map text-indigo-400 text-[9px]"></i> Beach
+                    </div>
+                    <!-- ডেট -->
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-calendar text-yellow-300 text-[9px]"></i> Mar 15, 2026
+                    </div>
+                    <!-- ফিচার্ড ব্যাজ -->
+                    <div class="absolute top-3 left-3 bg-amber-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-star text-white text-[7px]"></i> Featured
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-5">
+                    <!-- লেখক -->
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://i.pravatar.cc/40?img=1" alt="Author" class="w-6 h-6 rounded-full border border-indigo-200/50" loading="lazy" />
+                        <span class="text-xs font-medium text-gray-700">Sarah Johnson</span>
+                        <span class="text-[10px] text-gray-400">· 4 min read</span>
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-indigo-700 transition leading-tight">
+                        Finding Paradise in Ubud
+                    </h3>
+
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-2 leading-relaxed line-clamp-3">
+                        The rice terraces of Ubud are like nothing I've ever seen. Waking up to the sound of nature, practicing yoga with monkeys, and discovering hidden waterfalls made this trip unforgettable.
+                    </p>
+
+                    <!-- ট্যাগ -->
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="bg-indigo-50/70 text-indigo-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-indigo-100/50">#bali</span>
+                        <span class="bg-indigo-50/70 text-indigo-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-indigo-100/50">#ubud</span>
+                        <span class="bg-indigo-50/70 text-indigo-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-indigo-100/50">#yoga</span>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200/60">
+                        <button class="read-more-btn text-indigo-600 hover:text-indigo-800 text-xs font-semibold hover:underline transition flex items-center gap-1.5 group/btn">
+                            Read full story <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== স্টোরি ২ – প্যারিস রোমান্স ====== -->
+            <div class="story-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-rose-300/50 hover:-translate-y-2">
+
+                <div class="relative h-48 md:h-52 lg:h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/paris-story/600/400" alt="Paris Romance" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-rose-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-regular fa-heart text-rose-400 text-[9px]"></i> Romance
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-calendar text-yellow-300 text-[9px]"></i> Feb 10, 2026
+                    </div>
+                    <div class="absolute top-3 left-3 bg-rose-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-heart text-white text-[7px]"></i> Romantic
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://i.pravatar.cc/40?img=2" alt="Author" class="w-6 h-6 rounded-full border border-rose-200/50" loading="lazy" />
+                        <span class="text-xs font-medium text-gray-700">Alex &amp; Emma</span>
+                        <span class="text-[10px] text-gray-400">· 6 min read</span>
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-rose-700 transition leading-tight">
+                        A Love Letter to Paris
+                    </h3>
+
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-2 leading-relaxed line-clamp-3">
+                        From the Eiffel Tower sparkling at midnight to croissants at a local café, Paris is the city of love. Every corner tells a story, every street has a memory.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="bg-rose-50/70 text-rose-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-rose-100/50">#paris</span>
+                        <span class="bg-rose-50/70 text-rose-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-rose-100/50">#romance</span>
+                        <span class="bg-rose-50/70 text-rose-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-rose-100/50">#eiffeltower</span>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200/60">
+                        <button class="read-more-btn text-rose-600 hover:text-rose-800 text-xs font-semibold hover:underline transition flex items-center gap-1.5 group/btn">
+                            Read full story <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== স্টোরি ৩ – মালদ্বীপ এস্কেপ ====== -->
+            <div class="story-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-emerald-300/50 hover:-translate-y-2">
+
+                <div class="relative h-48 md:h-52 lg:h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/maldives-story/600/400" alt="Maldives Escape" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-emerald-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-regular fa-sun text-emerald-400 text-[9px]"></i> Luxury
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-calendar text-yellow-300 text-[9px]"></i> Jan 22, 2026
+                    </div>
+                    <div class="absolute top-3 left-3 bg-emerald-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-star text-white text-[7px]"></i> Top Pick
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://i.pravatar.cc/40?img=3" alt="Author" class="w-6 h-6 rounded-full border border-emerald-200/50" loading="lazy" />
+                        <span class="text-xs font-medium text-gray-700">Mark Wilson</span>
+                        <span class="text-[10px] text-gray-400">· 5 min read</span>
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-emerald-700 transition leading-tight">
+                        Overwater Bungalow Dreams
+                    </h3>
+
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-2 leading-relaxed line-clamp-3">
+                        Waking up to crystal-clear turquoise water, stepping directly into the ocean, and watching the sunset from your private deck — the Maldives is pure magic.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="bg-emerald-50/70 text-emerald-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-emerald-100/50">#maldives</span>
+                        <span class="bg-emerald-50/70 text-emerald-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-emerald-100/50">#overwater</span>
+                        <span class="bg-emerald-50/70 text-emerald-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-emerald-100/50">#luxury</span>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200/60">
+                        <button class="read-more-btn text-emerald-600 hover:text-emerald-800 text-xs font-semibold hover:underline transition flex items-center gap-1.5 group/btn">
+                            Read full story <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== স্টোরি ৪ – সুইস অ্যাডভেঞ্চার ====== -->
+            <div class="story-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-blue-300/50 hover:-translate-y-2">
+
+                <div class="relative h-48 md:h-52 lg:h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/swiss-story/600/400" alt="Swiss Adventure" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-blue-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-regular fa-snowflake text-blue-400 text-[9px]"></i> Alpine
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-calendar text-yellow-300 text-[9px]"></i> Dec 05, 2025
+                    </div>
+                    <div class="absolute top-3 left-3 bg-blue-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-compass text-white text-[7px]"></i> Adventure
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://i.pravatar.cc/40?img=4" alt="Author" class="w-6 h-6 rounded-full border border-blue-200/50" loading="lazy" />
+                        <span class="text-xs font-medium text-gray-700">James Turner</span>
+                        <span class="text-[10px] text-gray-400">· 7 min read</span>
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-blue-700 transition leading-tight">
+                        Conquering the Swiss Alps
+                    </h3>
+
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-2 leading-relaxed line-clamp-3">
+                        Hiking through the majestic Swiss Alps, breathing in the crisp mountain air, and standing on top of the world — an adventure of a lifetime.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="bg-blue-50/70 text-blue-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-blue-100/50">#switzerland</span>
+                        <span class="bg-blue-50/70 text-blue-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-blue-100/50">#alps</span>
+                        <span class="bg-blue-50/70 text-blue-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-blue-100/50">#hiking</span>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200/60">
+                        <button class="read-more-btn text-blue-600 hover:text-blue-800 text-xs font-semibold hover:underline transition flex items-center gap-1.5 group/btn">
+                            Read full story <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== স্টোরি ৫ – জাপানিজ কালচার ====== -->
+            <div class="story-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-purple-300/50 hover:-translate-y-2">
+
+                <div class="relative h-48 md:h-52 lg:h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/kyoto-story/600/400" alt="Kyoto Culture" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-purple-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-regular fa-flag text-purple-400 text-[9px]"></i> Cultural
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-calendar text-yellow-300 text-[9px]"></i> Nov 18, 2025
+                    </div>
+                    <div class="absolute top-3 left-3 bg-purple-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-cherry-blossom text-white text-[7px]"></i> Heritage
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://i.pravatar.cc/40?img=5" alt="Author" class="w-6 h-6 rounded-full border border-purple-200/50" loading="lazy" />
+                        <span class="text-xs font-medium text-gray-700">Yuki Tanaka</span>
+                        <span class="text-[10px] text-gray-400">· 8 min read</span>
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-purple-700 transition leading-tight">
+                        Kyoto: Where Tradition Meets Tranquility
+                    </h3>
+
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-2 leading-relaxed line-clamp-3">
+                        Exploring ancient temples, participating in a traditional tea ceremony, and walking through bamboo groves — Kyoto is a spiritual journey.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="bg-purple-50/70 text-purple-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-purple-100/50">#kyoto</span>
+                        <span class="bg-purple-50/70 text-purple-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-purple-100/50">#japan</span>
+                        <span class="bg-purple-50/70 text-purple-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-purple-100/50">#zen</span>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200/60">
+                        <button class="read-more-btn text-purple-600 hover:text-purple-800 text-xs font-semibold hover:underline transition flex items-center gap-1.5 group/btn">
+                            Read full story <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== স্টোরি ৬ – গ্রীক সানসেট ====== -->
+            <div class="story-card group relative bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/70 hover:border-orange-300/50 hover:-translate-y-2">
+
+                <div class="relative h-48 md:h-52 lg:h-56 overflow-hidden">
+                    <img src="https://picsum.photos/seed/santorini-story/600/400" alt="Santorini Sunset" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-orange-700 shadow-lg border border-white/60 flex items-center gap-1">
+                        <i class="fa-regular fa-sunset text-orange-400 text-[9px]"></i> Sunset
+                    </div>
+                    <div class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-medium flex items-center gap-1">
+                        <i class="fa-regular fa-calendar text-yellow-300 text-[9px]"></i> Oct 08, 2025
+                    </div>
+                    <div class="absolute top-3 left-3 bg-orange-400/90 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[8px] font-bold text-white shadow-lg flex items-center gap-1">
+                        <i class="fa-regular fa-star text-white text-[7px]"></i> Must-See
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="https://i.pravatar.cc/40?img=6" alt="Author" class="w-6 h-6 rounded-full border border-orange-200/50" loading="lazy" />
+                        <span class="text-xs font-medium text-gray-700">Maria Papadopoulos</span>
+                        <span class="text-[10px] text-gray-400">· 4 min read</span>
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 group-hover:text-orange-700 transition leading-tight">
+                        Santorini's Golden Hour
+                    </h3>
+
+                    <p class="text-gray-500 text-[11px] md:text-xs mt-2 leading-relaxed line-clamp-3">
+                        Watching the sun dip into the Aegean Sea from Oia's famous blue-domed churches — the most breathtaking sunset I've ever witnessed.
+                    </p>
+
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                        <span class="bg-orange-50/70 text-orange-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-orange-100/50">#santorini</span>
+                        <span class="bg-orange-50/70 text-orange-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-orange-100/50">#greece</span>
+                        <span class="bg-orange-50/70 text-orange-600 text-[8px] font-medium px-2 py-0.5 rounded-full border border-orange-100/50">#sunset</span>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t border-gray-200/60">
+                        <button class="read-more-btn text-orange-600 hover:text-orange-800 text-xs font-semibold hover:underline transition flex items-center gap-1.5 group/btn">
+                            Read full story <i class="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /grid -->
+
+        <!-- ===== সেকশন ফুটার ===== -->
+        <div class="text-center mt-12 md:mt-16">
+            <a href="#all-stories" class="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm text-indigo-700 border-2 border-indigo-200 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300 font-semibold px-7 md:px-9 py-2.5 md:py-3.5 rounded-full shadow-md hover:shadow-xl group text-sm md:text-base">
+                <span>Read all stories</span>
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     ক  ন ্ ট ্যা  ক  ট   স ে  ক  শ  ন   (যোগাযোগ) – অপরিবর্তিত
+     ================================================================ -->
+<section id="contact" class="contact-section py-12 md:py-16 lg:py-20 px-6 md:px-8 lg:px-12 bg-white relative" style="scroll-margin-top: 90px; overflow: hidden;">
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- ===== সেকশন হেডার ===== -->
+        <div class="text-center mb-8 md:mb-12">
+            <div class="inline-flex items-center gap-2 bg-indigo-50/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-indigo-200/40 shadow-sm">
+                <i class="fa-regular fa-message text-indigo-500 text-[10px]"></i>
+                <span class="text-indigo-700 font-semibold text-[10px] tracking-widest uppercase">Get in Touch</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold mt-3 bg-gradient-to-r from-indigo-700 via-indigo-600 to-sky-500 bg-clip-text text-transparent leading-tight">
+                Contact Us
+            </h2>
+            <p class="text-gray-500 mt-2 max-w-2xl mx-auto text-xs sm:text-sm md:text-base font-light">
+                Have questions? We'd love to hear from you. Reach out and let's plan your next adventure together.
+            </p>
+        </div>
+
+        <!-- ===== কন্ট্যাক্ট গ্রিড ===== -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+
+            <!-- ===== বাম পাশ: কন্ট্যাক্ট ইনফো ===== -->
+            <div class="space-y-6 md:space-y-8">
+
+                <!-- ঠিকানা কার্ড -->
+                <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/70 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100/80 flex items-center justify-center text-indigo-600 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">Our Office</h3>
+                            <p class="text-gray-600 text-sm mt-1 leading-relaxed">
+                                123 Travel Avenue, Suite 200<br />
+                                New York, NY 10001, USA
+                            </p>
+                            <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium inline-flex items-center gap-1 mt-1 hover:underline transition">
+                                View on map <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ফোন ও ইমেইল কার্ড -->
+                <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/70 hover:shadow-xl transition-shadow duration-300">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100/80 flex items-center justify-center text-emerald-600 text-base flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-700">Phone</h4>
+                                <p class="text-gray-600 text-sm">+1 (555) 123-4567</p>
+                                <p class="text-gray-500 text-xs">Mon–Fri, 9am–6pm EST</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-sky-100/80 flex items-center justify-center text-sky-600 text-base flex-shrink-0">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-700">Email</h4>
+                                <p class="text-gray-600 text-sm">hello@velora.com</p>
+                                <p class="text-gray-500 text-xs">We reply within 24h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- সোশ্যাল মিডিয়া কার্ড -->
+                <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/70 hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Follow Us</h3>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="#" class="w-12 h-12 rounded-full bg-indigo-100/80 hover:bg-indigo-200/80 text-indigo-600 hover:text-indigo-700 flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:shadow-md">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-sky-100/80 hover:bg-sky-200/80 text-sky-600 hover:text-sky-700 flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:shadow-md">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-rose-100/80 hover:bg-rose-200/80 text-rose-600 hover:text-rose-700 flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:shadow-md">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-blue-100/80 hover:bg-blue-200/80 text-blue-600 hover:text-blue-700 flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:shadow-md">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-100/80 hover:bg-gray-200/80 text-gray-700 hover:text-gray-900 flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:shadow-md">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ম্যাপ (প্লেসহোল্ডার) -->
+                <div class="bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg border border-white/70 hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative w-full h-48 md:h-56 bg-gray-200/60">
+                        <img src="https://picsum.photos/seed/map-placeholder/800/400" alt="Map placeholder" class="w-full h-full object-cover" loading="lazy" />
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/10 backdrop-blur-[2px]">
+                            <div class="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-indigo-700 shadow-lg border border-white/60 flex items-center gap-2">
+                                <i class="fa-solid fa-map-pin text-indigo-500"></i>
+                                <span>Find us here</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== ডান পাশ: কন্ট্যাক্ট ফর্ম ===== -->
+            <div class="bg-white/70 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/70 hover:shadow-xl transition-shadow duration-300">
+
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2">Send a Message</h3>
+                <p class="text-gray-500 text-sm mb-6">Fill out the form below and we'll get back to you shortly.</p>
+
+                <form id="contactForm" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">Full Name <span class="text-rose-500">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="e.g. John Doe" class="w-full px-4 py-3 rounded-xl border border-gray-200/80 bg-white/60 backdrop-blur-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200/50 focus:outline-none transition text-sm text-gray-800 placeholder:text-gray-400" />
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">Email Address <span class="text-rose-500">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="e.g. john@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200/80 bg-white/60 backdrop-blur-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200/50 focus:outline-none transition text-sm text-gray-800 placeholder:text-gray-400" />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1.5">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g. Booking inquiry" class="w-full px-4 py-3 rounded-xl border border-gray-200/80 bg-white/60 backdrop-blur-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200/50 focus:outline-none transition text-sm text-gray-800 placeholder:text-gray-400" />
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Message <span class="text-rose-500">*</span></label>
+                        <textarea id="message" name="message" required rows="5" placeholder="Tell us about your travel plans, questions, or feedback..." class="w-full px-4 py-3 rounded-xl border border-gray-200/80 bg-white/60 backdrop-blur-sm focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200/50 focus:outline-none transition text-sm text-gray-800 placeholder:text-gray-400 resize-none"></textarea>
+                    </div>
+                    <div class="flex items-start gap-2 text-xs text-gray-500">
+                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                        <span>Your information is safe with us. We respect your privacy.</span>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base group">
+                        <span>Send message</span>
+                        <i class="fa-solid fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </button>
+                </form>
+
+                <!-- ফর্ম সাবমিট সাফল্য বার্তা -->
+                <div id="formSuccess" class="hidden mt-4 p-4 rounded-xl bg-emerald-50/80 border border-emerald-200/50 text-emerald-700 text-sm flex items-center gap-3">
+                    <i class="fa-regular fa-circle-check text-xl text-emerald-500"></i>
+                    <span><strong>Thank you!</strong> Your message has been sent. We'll get back to you soon.</span>
+                </div>
+            </div>
+
+        </div><!-- /grid -->
+
+    </div>
+</section>
+<!-- ================================================================
+     ব ্ য  ক   ট ু   ট  প   ব  ট  ন   (Back to Top Button)
+     ================================================================ -->
+
+<!-- ===== বাটন HTML (পেজের যেকোনো জায়গায় বসান – ফুটারের আগে বা পরে) ===== -->
+<button id="backToTopBtn" 
+        class="back-to-top-btn fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-white/70 shadow-lg hover:shadow-xl text-indigo-600 hover:text-indigo-700 flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 hover:scale-110 active:scale-95"
+        aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up text-lg"></i>
+</button>
+
+
+
+<!-- ================================================================
+     ক  প ি  র  া  ই  ট   ফ ু ট  া  র   (মিনিমাল)
+     ================================================================ -->
+<footer class="copyright-footer py-5 px-6 border-t border-gray-200/60 bg-white/50 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+
+        <!-- কপিরাইট টেক্সট -->
+        <div class="flex items-center gap-2">
+            <i class="fa-regular fa-copyright text-gray-400 text-[12px]"></i>
+            <span>2026 <strong class="font-semibold text-gray-700">Velora</strong>. All rights reserved.</span>
+        </div>
+
+        <!-- লিগ্যাল লিংক (ঐচ্ছিক) -->
+        <div class="flex items-center gap-3 text-[11px]">
+            <a href="#" class="hover:text-indigo-600 transition">Privacy</a>
+            <span class="text-gray-300">|</span>
+            <a href="#" class="hover:text-indigo-600 transition">Terms</a>
+            <span class="text-gray-300">|</span>
+            <a href="#" class="hover:text-indigo-600 transition">Cookies</a>
+        </div>
+
+    </div>
+</footer>
+
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ---------- ১. মোবাইল মেনু টগল ----------
+      const toggleBtn = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          mobileMenu.classList.toggle('open');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            if (window.innerWidth < 768) {
+              mobileMenu.classList.remove('open');
+            }
+          });
+        });
+
+        window.addEventListener('resize', function() {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.remove('open');
+          }
+        });
+      }
+
+      // ---------- ২. ডেস্কটপ প্রোফাইল ড্রপডাউন ----------
+      const profileBtnDesktop = document.getElementById('profileIconBtnDesktop');
+      const profileDropdownDesktop = document.getElementById('profileDropdownDesktop');
+
+      if (profileBtnDesktop && profileDropdownDesktop) {
+        profileBtnDesktop.addEventListener('click', function(e) {
+          e.stopPropagation();
+          profileDropdownDesktop.classList.toggle('hidden');
+        });
+
+        profileDropdownDesktop.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+
+        document.addEventListener('click', function(event) {
+          if (!profileBtnDesktop.contains(event.target) && !profileDropdownDesktop.contains(event.target)) {
+            profileDropdownDesktop.classList.add('hidden');
+          }
+        });
+      }
+
+      // ---------- ৩. মোবাইল প্রোফাইল সেকশন টগল ----------
+      const profileBtnMobile = document.getElementById('profileIconBtnMobile');
+      const mobileProfileSection = document.getElementById('mobileProfileSection');
+      const closeProfileMobile = document.getElementById('closeProfileMobile');
+
+      if (profileBtnMobile && mobileProfileSection) {
+        // মোবাইলে প্রোফাইল আইকনে ক্লিক করলে সেকশন দেখাবে
+        profileBtnMobile.addEventListener('click', function(e) {
+          e.stopPropagation();
+          // মোবাইল মেনু খোলা থাকলে বন্ধ করুন
+          if (mobileMenu && window.innerWidth < 768) {
+            mobileMenu.classList.remove('open');
+          }
+          mobileProfileSection.classList.toggle('hidden');
+        });
+
+        // ক্লোজ বাটনে ক্লিক করলে লুকাবে
+        if (closeProfileMobile) {
+          closeProfileMobile.addEventListener('click', function() {
+            mobileProfileSection.classList.add('hidden');
+          });
+        }
+
+        // সেকশনের বাইরে ক্লিক করলে বন্ধ (শুধু মোবাইলে)
+        document.addEventListener('click', function(event) {
+          if (window.innerWidth < 768) {
+            const isClickInside = mobileProfileSection.contains(event.target) || profileBtnMobile.contains(event.target);
+            if (!isClickInside && !mobileProfileSection.classList.contains('hidden')) {
+              mobileProfileSection.classList.add('hidden');
+            }
+          }
+        });
+      }
+
+      // ---------- ৪. উইন্ডো রিসাইজে সেকশন রিসেট ----------
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768 && mobileProfileSection) {
+          mobileProfileSection.classList.add('hidden');
+        }
+      });
+
+    })();
+
+    
+    (function() {
+        'use strict';
+
+        const track = document.getElementById('carouselTrack');
+        const slides = track.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('#dotsContainer button');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const container = document.getElementById('carouselContainer');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoPlayInterval = null;
+        const AUTO_PLAY_DELAY = 4500;
+        let isPaused = false;
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+
+            track.style.transform = 'translateX(-' + (index * 100) + '%)';
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        function startAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            if (!isPaused) {
+                autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_DELAY);
+            }
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
+
+        function pauseAutoPlay() {
+            isPaused = true;
+            stopAutoPlay();
+        }
+
+        function resumeAutoPlay() {
+            isPaused = false;
+            startAutoPlay();
+        }
+
+        // ——— ইভেন্ট লিসেনার ———
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                prevSlide();
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nextSlide();
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        }
+
+        dots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'), 10);
+                if (!isNaN(index) && index !== currentIndex) {
+                    goToSlide(index);
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+            });
+        });
+
+        // ——— হোভার: পজ/রিজিউম ———
+        if (container) {
+            container.addEventListener('mouseenter', pauseAutoPlay);
+            container.addEventListener('mouseleave', resumeAutoPlay);
+            container.addEventListener('touchstart', pauseAutoPlay, { passive: true });
+            container.addEventListener('touchend', resumeAutoPlay, { passive: true });
+        }
+
+        // ——— টাচ / সোয়াইপ ———
+        let touchStartX = 0;
+        let touchEndX = 0;
+        if (container) {
+            container.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            container.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+            }, { passive: true });
+        }
+
+        // ——— কীবোর্ড সাপোর্ট ———
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopAutoPlay();
+                startAutoPlay();
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                stopAutoPlay();
+                startAutoPlay();
+                e.preventDefault();
+            }
+        });
+
+        // ——— আরম্ভ ———
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === 0);
+        });
+        goToSlide(0);
+        startAutoPlay();
+
+        // ——— ভিজিবিলিটি চেঞ্জ ———
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                pauseAutoPlay();
+            } else {
+                resumeAutoPlay();
+            }
+        });
+
+    })();
+
+
+
+    <!-- ===== প্লেন ফ্লাই অ্যানিমেশন জাভাস্ক্রিপ্ট ===== -->
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookButtons = document.querySelectorAll('.book-now-btn');
+
+        bookButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                if (this.classList.contains('flying')) return;
+
+                this.classList.add('flying');
+
+                setTimeout(() => {
+                    this.classList.remove('flying');
+                    this.classList.add('flying-reset');
+
+                    setTimeout(() => {
+                        this.classList.remove('flying-reset');
+                    }, 100);
+                }, 1200);
+
+                // চাইলে এখানে বুকিং পেজে রিডাইরেক্ট করুন:
+                // window.location.href = '/booking';
+            });
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // সব বাটন নির্বাচন (ডেস্টিনেশন + প্যাকেজ)
+        const allButtons = document.querySelectorAll('.book-now-btn, .book-package-btn');
+
+        allButtons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.classList.contains('flying')) return;
+
+                this.classList.add('flying');
+
+                setTimeout(() => {
+                    this.classList.remove('flying');
+                    this.classList.add('flying-reset');
+                    setTimeout(() => {
+                        this.classList.remove('flying-reset');
+                    }, 100);
+                }, 1200);
+
+                // আপনি চাইলে এখানে বুকিং পেজে রিডাইরেক্ট করতে পারেন:
+                // window.location.href = '/booking';
+            });
+        });
+
+        // ভিউ ডিটেইলস বাটন (ডেমো)
+        document.querySelectorAll('.view-details-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Package details will be shown here. You can link this to a modal or details page.');
+            });
+        });
+    });
+    
+     document.addEventListener('DOMContentLoaded', function() {
+        // রিড মোর বাটন (ডেমো অ্যালার্ট)
+        document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.story-card');
+                const title = card.querySelector('h3')?.textContent || 'Story';
+                alert('📖 "' + title + '"\n\nFull story will be displayed here.\nYou can link this to a blog post or modal.');
+            });
+        });
+
+        // "Read all stories" বাটন (ডেমো)
+        const readAllBtn = document.querySelector('a[href="#all-stories"]');
+        if (readAllBtn) {
+            readAllBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('📚 All travel stories will be shown here.\nYou can link this to a blog archive page.');
+            });
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        // স্ক্রল ইভেন্ট – বাটন দেখান/লুকান
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // ক্লিক ইভেন্ট – স্মুথ স্ক্রল
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    });
+
+    // ===== মোবাইল মেনু বাইরে ক্লিক করলে বন্ধ =====
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (toggleBtn && mobileMenu) {
+        document.addEventListener('click', function(event) {
+            // শুধু মোবাইল স্ক্রিনে (768px এর কম)
+            if (window.innerWidth < 768) {
+                const isClickInside = mobileMenu.contains(event.target) || toggleBtn.contains(event.target);
+                if (!isClickInside && mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                }
+            }
+        });
+    }
+});
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // পেজ সম্পূর্ণ লোড হলে প্রিলোডার লুকান
+        const preloader = document.getElementById('preloader');
+
+        // উইন্ডো লোড ইভেন্ট – সব কনটেন্ট, ইমেজ লোড হওয়া পর্যন্ত অপেক্ষা
+        window.addEventListener('load', function() {
+            // ১ সেকেন্ড অপেক্ষা (ঐচ্ছিক, ন্যূনতম সময় ধরে রাখতে)
+            setTimeout(function() {
+                preloader.classList.add('loaded');
+                // সম্পূর্ণরূপে DOM থেকে সরান (ঐচ্ছিক)
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 800); // ৮০০ms ধরে রাখুন (অথবা ৫০০)
+        });
+
+    });
+  </script>
+
+</body>
+</html>
